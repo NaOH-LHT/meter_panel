@@ -44,22 +44,7 @@
             /* ios打包配置 */
             "sdkConfigs" : {}
         },
-        "nativePlugins" : {
-            "Fvv-UniSerialPort" : {
-                "__plugin_info__" : {
-                    "name" : "UniSerialPort",
-                    "description" : "安卓串口通讯",
-                    "platforms" : "Android",
-                    "url" : "",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : false,
-                    "bought" : -1,
-                    "pid" : "",
-                    "parameters" : {}
-                }
-            }
-        }
+        "nativePlugins" : {}
     },
     /* SDK配置 */
     "quickapp" : {},
