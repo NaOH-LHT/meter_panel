@@ -1,0 +1,53 @@
+/* 水平间距 */
+/* 水平间距 */
+.main_box {
+  font-size: 0.875rem;
+}
+.main_box .title_box {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.3125rem;
+}
+.main_box .line_box {
+  display: flex;
+  align-items: center;
+  padding: 0.3125rem 0.625rem;
+}
+.main_box .line_box .name {
+  font-weight: bold;
+  min-width: 3.75rem;
+}
+.main_box .line_box .value {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #AAAAAA;
+}
+.main_box .line_box .btn {
+  flex-shrink: 0;
+  width: 9.375rem;
+  margin-left: 0.625rem;
+  font-size: 0.875rem;
+}
+.main_box .connect_btn {
+  padding: 0.625rem;
+}
+.main_box .connect_btn .btn {
+  height: 2.75rem;
+  line-height: 2.75rem;
+}
+.main_box .msg_box {
+  box-sizing: border-box;
+  width: 90vw;
+  height: 50vh;
+  border: 1px solid #AAAAAA;
+  border-radius: 0.3125rem;
+  margin: 0 auto;
+}
+.main_box .msg_box .msg_line {
+  box-sizing: border-box;
+  padding: 0.3125rem 0.625rem;
+  word-wrap: break-word;
+}
+.main_box .msg_box .msg_line + .msg_line {
+  border-top: 1px solid #AAAAAA;
+}
