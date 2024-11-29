@@ -40,11 +40,28 @@
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ]
             },
-            "ios" : {},
+            "ios" : {
+                "dSYMs" : false
+            },
             /* ios打包配置 */
             "sdkConfigs" : {}
         },
-        "nativePlugins" : {}
+        "nativePlugins" : {
+            "moe-tcp-client" : {
+                "__plugin_info__" : {
+                    "name" : "Moe TCP通讯插件（客户端）",
+                    "description" : "基于原生Android开发的 uni-app 插件，实现在APP中创建TCP客户端，完成基本的TCP通讯功能",
+                    "platforms" : "Android",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=16810",
+                    "android_package_name" : "com.pannel",
+                    "ios_bundle_id" : "",
+                    "isCloud" : true,
+                    "bought" : 1,
+                    "pid" : "16810",
+                    "parameters" : {}
+                }
+            }
+        }
     },
     /* SDK配置 */
     "quickapp" : {},
