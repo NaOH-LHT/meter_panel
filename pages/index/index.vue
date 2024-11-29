@@ -5,6 +5,8 @@
 			<button @click="stop">关闭 Wi-Fi 模块</button>
 			<button @click="getDetail">获取已连接的 Wi-Fi 信息</button>
 			<button @click="getList">获取 Wi-Fi 列表</button>
+			<button @click="connectTCP">TCP连接 </button>
+			<button @click="TCPSend">TCPSend </button>
 			<view class="" v-if="isConnect">
 				<button @click="goDisplay">
 					数据展示
@@ -17,21 +19,39 @@
 	</view>
 </template>
 <script>
+	import TCPSocket from '../../hooks/TCPSocket'
 	export default {
 		data() {
 			return {
-				isConnect: false
+				isConnect: false,
+				SocketTask:{}
 			}
 		},
 		onLoad(){
 			//获取到 Wi-Fi 列表数据事件的监听函数
-			uni.onGetWifiList((e)=>{
-				console.log('onGetWifiList',e)
+			console.log("onload");
+			this.connectTCP();	
+		
+			
+			uni.onSocketMessage(function (res) {
+			  console.log('收到服务器内容：' + res.data);
+			});
+
+			this.SocketTask.onError(err=>{
+				console.log("TCPError: ",err)
 			})
+			this.SocketTask.onOpen(res=>{
+				console.log("TCPOpen: ",res)
+			})
+			this.SocketTask.onClose(err=>{
+				console.log("TCPClose: ",err)
+			})
+			
 		},
 		onUnload(){
 			//移除获取到 Wi-Fi 列表数据事件的监听函数。
 			uni.offGetWifiList()
+			this.SocketTask.close();
 		},
 		methods: {
 			start() { // 连接
@@ -97,6 +117,32 @@
 				uni.navigateTo({
 					url: '/pages/input/input'
 				})
+			},
+	
+			TCPSend(){
+				console.log(this.SocketTask);
+				 uni.sendSocketMessage({
+				      data: "asdlfkjalskdfjlakjsdfl"
+				});
+			},
+			connectTCP(){
+				this.SocketTask=uni.connectSocket({
+					url: 'http://192.168.1.50:8086',
+					header: {
+						'content-type': 'application/json'
+					},
+					protocols: ['protocol1'],
+					method: 'GET',
+					success(e) {
+						console.log('TCPSuccess', e)
+					},
+					fail(e) {
+						console.log('TCPFail', e)
+					},
+					complete(e) {
+						console.log('TCPComplete', e)
+					}
+				});
 			}
 		}
 	}
